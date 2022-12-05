@@ -25,6 +25,8 @@ def browser(request):
         options_firefox.set_preference("intl.accept_languages", language)
         browser = webdriver.Firefox(options=options_firefox)
         print("\nstart firefox browser for test..")
+    else:
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
     print("\nquit browser..")
     browser.quit()
